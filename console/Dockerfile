@@ -3,7 +3,7 @@
 
 # ---------- build stage ----------
 # oven/bun publishes no Alpine-version-suffixed tag; this is Alpine 3.22.5 today.
-FROM oven/bun:1-alpine AS builder
+FROM oven/bun:1 AS builder
 WORKDIR /app
 
 # Install deps first for better layer caching
