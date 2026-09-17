@@ -50,7 +50,7 @@ export function AppSidebar() {
   return (
     <aside
       className={cn(
-        "hidden md:flex shrink-0 flex-col text-[var(--color-sidebar-foreground)] bg-[var(--color-sidebar)] transition-[width] duration-200",
+        "hidden md:flex shrink-0 flex-col font-[var(--font-sidebar)] text-[var(--color-sidebar-foreground)] bg-[var(--color-sidebar)] transition-[width] duration-200",
         collapsed ? "w-16" : "w-64"
       )}
     >
@@ -77,7 +77,7 @@ export function AppSidebar() {
         )}
       </div>
 
-      <nav className="flex-1 overflow-y-auto px-2 py-4 custom-scrollbar">
+      <nav className="flex-1 overflow-y-auto py-4 custom-scrollbar">
         <Section title={t("nav.overview")} items={overview} pathname={pathname} collapsed={collapsed} />
         <Section title={t("nav.cloud")} items={cloud} pathname={pathname} collapsed={collapsed} />
         <Section title={t("nav.infrastructure")} items={infra} pathname={pathname} collapsed={collapsed} />
@@ -106,7 +106,7 @@ function Section({ title, items, pathname, collapsed }: { title: string; items: 
   );
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 px-2">
       {!collapsed && (
         <div className="px-3 mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-sidebar-muted)]">{title}</div>
       )}
@@ -118,9 +118,9 @@ function Section({ title, items, pathname, collapsed }: { title: string; items: 
           );
           const active = matches && !hasMoreSpecific;
           const base = cn(
-            "relative flex items-center gap-3 rounded-lg transition-colors",
-            "text-[15px] font-medium tracking-[-0.01em] leading-6",
-            collapsed ? "justify-center px-2 py-2" : "px-3 py-2"
+            "relative flex min-h-11 items-center gap-3 rounded-lg transition-colors",
+            "text-[15px] font-normal tracking-normal leading-6",
+            collapsed ? "justify-center px-2 py-2" : "px-5 py-2"
           );
           if (it.disabled) {
             return (
@@ -140,10 +140,10 @@ function Section({ title, items, pathname, collapsed }: { title: string; items: 
                 className={cn(
                   base,
                   "text-[var(--color-sidebar-foreground)] hover:text-white hover:bg-[var(--color-sidebar-active-bg)]",
-                  active && "bg-[var(--color-sidebar-active-bg)] text-[var(--color-sidebar-accent)] font-semibold"
+                  active && "bg-[var(--color-sidebar-active-bg)] text-[var(--color-sidebar-accent)] font-normal"
                 )}
               >
-                {active && <span className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-[var(--color-sidebar-accent)]" />}
+                {active && <span className="absolute -left-2 top-2 bottom-2 w-1 rounded-r bg-[var(--color-sidebar-accent)]" />}
                 <it.icon className="h-[18px] w-[18px] shrink-0" />
                 {!collapsed && <span className="truncate">{it.label}</span>}
               </Link>
